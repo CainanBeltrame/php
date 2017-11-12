@@ -48,7 +48,7 @@
                         <li role="presentation"><a href="#">
                             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                         </li>
-<!--PHP-->              <?PHP if((isset($priviUser))) { ?>
+<!--PHP-->              <?PHP if($priviUser == 1) { ?>
                             <li role="presentation"><a href="Administrativa.php"> Área Administrativa </a>
                             </li>
 <!--PHP-->              <?PHP } ?>

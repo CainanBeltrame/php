@@ -113,46 +113,46 @@
                                         
                                     </tr>
 <?PHP                               while($row = mysqli_fetch_array($rs)) { 
-                                    if($row['Quantidade'] <= 5)
+                                    if($row['Qtd'] <= 5)
                                     {?>
                                         <tr class="danger">
-                                        <td><?PHP echo $row['ID'];?></td>
+                                        <td><?PHP echo $row['id'];?></td>
                                         <td><?PHP echo $row['Nome'];?></td>
                                         <td><?PHP echo $row['Descricao'];?></td>
-                                        <td>R$ <?PHP echo $row['Preco'];?></td>
-                                        <td><?PHP echo $row['Quantidade'];?></td>
+                                        <td>R$ <?PHP echo $row['ValorUnit'];?></td>
+                                        <td><?PHP echo $row['Qtd'];?></td>
                                         <td>
-                                            <button class="btn btn-warning" onclick="javascript: location.href='FrmEdit.php?tipo=1&id=' +
-                                <?php echo $row['ID'] ?>">
+                                            <button class="btn btn-warning" onclick="javascript: location.href='FrmEditManga.php?tipo=1&id=' +
+                                <?php echo $row['id'] ?>">
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span> 
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-danger" onclick = "javascript: location.href='FrmEdit.php?tipo=2&id=' +
-                                <?php echo $row['ID'] ?>"> 
+                                            <button class="btn btn-danger" onclick = "javascript: location.href='FrmEditManga.php?tipo=2&id=' +
+                                <?php echo $row['id'] ?>"> 
                                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </button>
                                         </td>
                                         </tr>
 <?PHP                               }
                                     else
                                     {
-                                        if($row['Quantidade'] <= 15)
+                                        if($row['Qtd'] <= 15)
                                         {?>
                                             <tr class="warning">
-                                            <td><?PHP echo $row['ID'];?></td>
+                                            <td><?PHP echo $row['id'];?></td>
                                             <td><?PHP echo $row['Nome'];?></td>
                                             <td><?PHP echo $row['Descricao'];?></td>
-                                            <td>R$ <?PHP echo $row['Preco'];?></td>
-                                            <td><?PHP echo $row['Quantidade'];?></td>
+                                            <td>R$ <?PHP echo $row['ValorUnit'];?></td>
+                                            <td><?PHP echo $row['Qtd'];?></td>
                                             <td>
-                                                <button class="btn btn-warning" onclick="javascript: location.href='FrmEdit.php?tipo=1&id=' +
-                                    <?php echo $row['ID'] ?>">
+                                                <button class="btn btn-warning" onclick="javascript: location.href='FrmEditManga.php?tipo=1&id=' +
+                                    <?php echo $row['id'] ?>">
                                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span> 
                                                 </button>
                                             </td>
                                             <td>
-                                                <button class="btn btn-danger" onclick = "javascript: location.href='FrmEdit.php?tipo=2&id=' +
-                                    <?php echo $row['ID'] ?>"> 
+                                                <button class="btn btn-danger" onclick = "javascript: location.href='FrmEditManga.php?tipo=2&id=' +
+                                    <?php echo $row['id'] ?>"> 
                                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </button>
                                             </td>
                                             </tr>
@@ -160,20 +160,20 @@
                                         else
                                         {?>
                                             <tr class="success">
-                                            <td><?PHP echo $row['ID'];?></td>
+                                            <td><?PHP echo $row['id'];?></td>
                                             <td><?PHP echo $row['Nome'];?></td>
                                             <td><?PHP echo $row['Descricao'];?></td>
-                                            <td>R$ <?PHP echo $row['Preco'];?></td>
-                                            <td><?PHP echo $row['Quantidade'];?></td>
+                                            <td>R$ <?PHP echo $row['ValorUnit'];?></td>
+                                            <td><?PHP echo $row['Qtd'];?></td>
                                             <td>
-                                                <button class="btn btn-warning" onclick="javascript: location.href='FrmEdit.php?tipo=1&id=' +
-                                    <?php echo $row['ID'] ?>">
+                                                <button class="btn btn-warning" onclick="javascript: location.href='FrmEditManga.php?tipo=1&id=' +
+                                    <?php echo $row['id'] ?>">
                                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span> 
                                                 </button>
                                             </td>
                                             <td>
-                                                <button class="btn btn-danger" onclick = "javascript: location.href='FrmEdit.php?tipo=2&id=' +
-                                    <?php echo $row['ID'] ?>"> 
+                                                <button class="btn btn-danger" onclick = "javascript: location.href='FrmEditManga.php?tipo=2&id=' +
+                                    <?php echo $row['id'] ?>"> 
                                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </button>
                                             </td>
                                             </tr>
@@ -379,23 +379,23 @@ if(!(empty($_SESSION['aviso'])))
                                                 </th>
                                             </tr>
         <?PHP                               while($row = mysqli_fetch_array($rs)) {   
-                                                if($row['Quantidade'] <= 5)
+                                                if($row['Qtd'] <= 5)
                                                 {?>
                                                     <tr class="danger">
-                                                    <td><?PHP echo $row['ID'];?></td>
+                                                    <td><?PHP echo $row['id'];?></td>
                                                     <td><?PHP echo $row['Nome'];?></td>
                                                     <td><?PHP echo $row['Descricao'];?></td>
-                                                    <td>R$ <?PHP echo $row['Preco'];?></td>
-                                                    <td><?PHP echo $row['Quantidade'];?></td>
+                                                    <td>R$ <?PHP echo $row['ValorUnit'];?></td>
+                                                    <td><?PHP echo $row['Qtd'];?></td>
                                                     <td>
-                                                        <button class="btn btn-warning" onclick="javascript: location.href='FrmEdit.php?tipo=1&id=' +
-                                            <?php echo $row['ID'] ?>">
+                                                        <button class="btn btn-warning" onclick="javascript: location.href='FrmEditManga.php?tipo=1&id=' +
+                                            <?php echo $row['id'] ?>">
                                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span> 
                                                         </button>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-danger" onclick = "javascript: location.href='FrmEdit.php?tipo=2&id=' +
-                                            <?php echo $row['ID'] ?>"> 
+                                                        <button class="btn btn-danger" onclick = "javascript: location.href='FrmEditManga.php?tipo=2&id=' +
+                                            <?php echo $row['id'] ?>"> 
                                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </button>
                                                     </td>
                                                     <TD></TD>
@@ -403,23 +403,23 @@ if(!(empty($_SESSION['aviso'])))
                                     <?PHP                               }
                                                 else
                                                 {
-                                                    if($row['Quantidade'] <= 15)
+                                                    if($row['Qtd'] <= 15)
                                                     {?>
                                                         <tr class="warning">
-                                                        <td><?PHP echo $row['ID'];?></td>
+                                                        <td><?PHP echo $row['id'];?></td>
                                                         <td><?PHP echo $row['Nome'];?></td>
                                                         <td><?PHP echo $row['Descricao'];?></td>
-                                                        <td>R$ <?PHP echo $row['Preco'];?></td>
-                                                        <td><?PHP echo $row['Quantidade'];?></td>
+                                                        <td>R$ <?PHP echo $row['ValorUnit'];?></td>
+                                                        <td><?PHP echo $row['Qtd'];?></td>
                                                         <td>
-                                                            <button class="btn btn-warning" onclick="javascript: location.href='FrmEdit.php?tipo=1&id=' +
-                                                <?php echo $row['ID'] ?>">
+                                                            <button class="btn btn-warning" onclick="javascript: location.href='FrmEditManga.php?tipo=1&id=' +
+                                                <?php echo $row['id'] ?>">
                                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span> 
                                                             </button>
                                                         </td>
                                                         <td>
-                                                            <button class="btn btn-danger" onclick = "javascript: location.href='FrmEdit.php?tipo=2&id=' +
-                                                <?php echo $row['ID'] ?>"> 
+                                                            <button class="btn btn-danger" onclick = "javascript: location.href='FrmEditManga.php?tipo=2&id=' +
+                                                <?php echo $row['id'] ?>"> 
                                                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </button>
                                                         </td>
                                                         <td></td>
@@ -428,20 +428,20 @@ if(!(empty($_SESSION['aviso'])))
                                                     else
                                                     {?>
                                                         <tr class="success">
-                                                        <td><?PHP echo $row['ID'];?></td>
+                                                        <td><?PHP echo $row['id'];?></td>
                                                         <td><?PHP echo $row['Nome'];?></td>
                                                         <td><?PHP echo $row['Descricao'];?></td>
-                                                        <td>R$ <?PHP echo $row['Preco'];?></td>
-                                                        <td><?PHP echo $row['Quantidade'];?></td>
+                                                        <td>R$ <?PHP echo $row['ValorUnit'];?></td>
+                                                        <td><?PHP echo $row['Qtd'];?></td>
                                                         <td>
-                                                            <button class="btn btn-warning" onclick="javascript: location.href='FrmEdit.php?tipo=1&id=' +
-                                                <?php echo $row['ID'] ?>">
+                                                            <button class="btn btn-warning" onclick="javascript: location.href='FrmEditManga.php?tipo=1&id=' +
+                                                <?php echo $row['id'] ?>">
                                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span> 
                                                             </button>
                                                         </td>
                                                         <td>
-                                                            <button class="btn btn-danger" onclick = "javascript: location.href='FrmEdit.php?tipo=2&id=' +
-                                                <?php echo $row['ID'] ?>"> 
+                                                            <button class="btn btn-danger" onclick = "javascript: location.href='FrmEditManga.php?tipo=2&id=' +
+                                                <?php echo $row['id'] ?>"> 
                                                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </button>
                                                         </td>
                                                         <td></td>
@@ -477,6 +477,10 @@ if(!(empty($_SESSION['aviso'])))
         {?>
                             <div class = "col-md-offset-4">
                                 <h2>Sem Registro no Servidor</h2>
+                                <button type = "button" class="btn btn-success" onclick = "javascript: location.href='FrmAdiciona.php?type=1'">
+                                    <span class = "glyphicon glyphicon-plus" aria-hidden="true">Adicionar Mangá</span>
+                                </button>
+
                             </div>
 <?PHP   } ?>
                                     </div>
@@ -537,15 +541,15 @@ if(!(empty($_SESSION['aviso'])))
                     $quantidade = 10;
                     $pagina = intval($_GET['pagina']);
                     $inicio = ($quantidade * $pagina) - $quantidade;
+                    $num = 0;
+                    if($rs = selecNoticia($inicio, $quantidade, 1)){$num = mysqli_num_rows($rs);}
+                    
 
-                    $rs = selecNoticia($inicio, $quantidade, 1);
-                    $num = mysqli_num_rows($rs);
-
-                    $rsNlimt = selecNoticia($inicio, $quantidade, 0);
-                    $num_total = mysqli_num_rows($rsNlimt);
-
-                    $numPagina = ceil($num_total/$quantidade);
-                    $i = 1;
+                    if($rsNlimt = selecNoticia($inicio, $quantidade, 0)){
+                        $num_total = mysqli_num_rows($rsNlimt);
+                        $numPagina = ceil($num_total/$quantidade);
+                        $i = 1;}
+                   
 ?>               
                     <!DOCTYPE html>
                     <html lang="en">
@@ -554,7 +558,7 @@ if(!(empty($_SESSION['aviso'])))
                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             <meta http-equiv="X-UA-Compatible" content="ie=edge">
                             
-                            <title>Lista de Nottícias</title>
+                            <title>Lista de Notícias</title>
                             
                             <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
                             <script src="bootstrap/js/ajax/jquery.min.js"></script>
@@ -630,7 +634,7 @@ if(!(empty($_SESSION['aviso'])))
                                                     <th></th>
                                                     <th></th>
                                                     <th>
-                                                        <button type = "button" class="btn btn-success" onclick = "javascript: location.href='FrmAdiciona.php?type=1'">
+                                                        <button type = "button" class="btn btn-success" onclick = "javascript: location.href='FrmAdiciona.php?type=2'">
                                                             <span class = "glyphicon glyphicon-plus" aria-hidden="true"></span>
                                                         </button>
                                                     </th>
@@ -638,17 +642,17 @@ if(!(empty($_SESSION['aviso'])))
 <?PHP while($row = mysqli_fetch_array($rs))
 {?>
                                             <tr>
-                                                <td><?PHP ECHO $row['ID'];?></td>
+                                                <td><?PHP ECHO $row['id'];?></td>
                                                 <td><?PHP ECHO $row['Titulo'];?></td>
                                                 <td><?PHP ECHO $row['DescricaoBreve'];?></td>
                                                 <td><?PHP ECHO $row['Data'];?></td>
                                                 <td>
-                                                    <button class="btn btn-warning" onclick="javascript:location.href='FrmEdit.php?tipo=3&id=' + <?PHP ECHO $row['ID']?>">
+                                                    <button class="btn btn-warning" onclick="javascript:location.href='FrmEditNoticia.php?tipo=1&id=' + <?PHP ECHO $row['id']?>">
                                                         <span class="glyphicon glyphicon-pencil" arial-hidden="true"></span>
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-danger" onclick="javascript:location.href='FrmEdit.php?tipo=4&id=' + <?PHP ECHO $row['ID']?>">
+                                                    <button class="btn btn-danger" onclick="javascript:location.href='FrmEditNoticia.php?tipo=2&id=' + <?PHP ECHO $row['id']?>">
                                                         <span class="glyphicon glyphicon-remove" arial-hidden="true"></span>
                                                     </button>
                                                 </td>
@@ -682,6 +686,9 @@ if(!(empty($_SESSION['aviso'])))
         {?>
                                             <div class = "col-md-offset-4">
                                                 <h2>Sem Registro no Servidor</h2>
+                                                <button type = "button" class="btn btn-success" onclick = "javascript: location.href='FrmAdiciona.php?type=2'">
+                                                    <span class = "glyphicon glyphicon-plus" aria-hidden="true">Adicionar Noticia</span>
+                                                </button>
                                             </div>
 <?PHP   }?>
                                         </div>
@@ -689,7 +696,43 @@ if(!(empty($_SESSION['aviso'])))
                                 </div>
                             </div>
 
+                            <div id = "fades">
+                                <div ID = "FadeAviso" class = "modal fade" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class = "col-xs-15">
+                                                <div class = "modal-header">
+                                                    <button type= "button" class = "close" data-dismiss = "modal" arial-labe = "close"><span aria-hidden = "true">&times;</span></button>
+                                                    <center><h4 class = "modal-title">ATENÇÃO</h4></center>
+                                                </div>
+                                                <div class = "modal-body">
+                                                    <label for="logour" class="control-label"><?PHP echo $_SESSION['MsgAviso'];?> </label>
+                                                    <button type="button" class="btn btn-success btn-block" data-dismiss = "modal">OK</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--WARNINGFADE-->
+                            </div>
 
+<?PHP
+    if(!(empty($_SESSION['aviso'])))
+    {
+        $Aviso = $_SESSION['aviso'];
+        if($Aviso == 1)
+            {
+                unset($_SESSION['aviso']);
+                unset($_SESSION['MsgAviso']);
+?>
+                <script>
+                    $(function(){
+                    $('#FadeAviso').modal('show');
+                    });
+                </script>
+<?php         
+            }
+    }
+?>
                         </body>
                     </html>
                     

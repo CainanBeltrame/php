@@ -1,10 +1,6 @@
 <?PHP
-    //PEGA A IMAGEM
-    $img = file_get_contents("Imagens/Capas/Capa-Aoharaidovol13.jpg");
-
-    //CRIPTOGRAFA
-    echo $bas64 = base64_encode($img);
-    //EXIBI A IMAGEM DESCRIPTOGRAFANDO
-    //echo '<img src="data:image/jpg;base64,'.$bas64.'"/>'
-
+    echo $data = date("d/m/Y");  
+    echo "||||||";
+    echo $data = substr($data,6,4)."-".substr($data,3,2)."-".substr($data,0,2);
+    
 ?>

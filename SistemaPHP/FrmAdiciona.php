@@ -109,9 +109,60 @@
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <meta http-equiv="X-UA-Compatible" content="ie=edge">
                     <title>Adicionar Noticia</title>
+
+                    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+                    <script src="bootstrap/js/ajax/jquery.min.js"></script>
+                    <script src="bootstrap/js/bootstrap.min.js"></script>
+                    <script src="js/validator.min.js"></script>
                 </head>
+                
                 <body>
-                    
+                    <div id = "conteudo">
+                        <div class = "col-md-12">
+                            <div id = "titulo" class = "col-md-offset-4">
+                                <h2>EDITAR NOTÍCIA</h2>
+                            </div>
+                            <hr>
+                            <div id = "edicao" class = "col-md-6 col-md-offset-2">
+                                <form data-toggle = "validator" enctype="multipart/form-data" role="form" method="POST" class="form-horizontal" action="BLL/AdcionaNoticia.php">
+                                    
+                                    <div class = "form-group">
+                                        <label for="imgNoticia" class="col-sm-2 control-label">Capa</label>
+                                        <div class = "col-xs-6 col-sm-4">
+                                            <input type="file" name="imgNoticia" required>
+                                        </div>
+                                    </div>
+
+                                    <div class = "form-group">
+                                        <label for="tituloNo" class="col-sm-2 control-label">Titulo</label>
+                                        <div class = "col-sm-10">
+                                            <input type="text" class="form-control" name="tituloNoticia" required placeholder= "lancamento noragami">
+                                        </div>
+                                    </div>
+
+                                    <div class = "form-group">
+                                        <label for="descNoticia" class="col-sm-2 control-label">Descrição Breve</label>
+                                        <div class = "col-sm-10">
+                                            <textarea class="form-control" name="descBr" rows="3" required placeholder ="escreva aki uma descricao curta para atrair leitor"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class = "form-group">
+                                        <label for="descComNoticia" class="col-sm-2 control-label"></label>
+                                        <div class = "col-sm-10">
+                                            <textarea name="DescComNoticia" class="form-control" rows="10" placeholder = "Escreva aki uma descricao completa"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class = "col-sm-10">
+                                        <input type="button" class = "btn btn-primary" value = "CANCELAR" onclick = "history.back()">
+                                        <input type="submit" class = "btn btn-warning" value = "ATUALIZAR"><br>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>    
                 </body>
                 </html>
 <?PHP       }
