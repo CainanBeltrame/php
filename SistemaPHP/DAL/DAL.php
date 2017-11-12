@@ -12,9 +12,9 @@
         {
             if($row = mysqli_fetch_array($rs))
             {  
-                $_SESSION['ID'] = $row['ID'];
+                $_SESSION['ID'] = $row['Id'];
                 $_SESSION['NOME'] = $row['Nome'];
-                $_SESSION['PRIVILEGIO'] = $row['Privilegio_ID'];
+                $_SESSION['PRIVILEGIO'] = $row['TipoUser_id'];
                 $logV = 1;
             }
             else
@@ -40,7 +40,7 @@
     function totalpostsManga($iduser)
     {
         $con = open_conexao();
-        if($rsManga = mysqli_query($con,"SELECT COUNT(*) FROM mangas WHERE Usuario_ID = ".$iduser))
+        if($rsManga = mysqli_query($con,"SELECT COUNT(*) FROM mangas WHERE Usuario_Id = ".$iduser))
         {
             if($rowManga = mysqli_fetch_array($rsManga))
             {
@@ -54,7 +54,7 @@
     function totalpostsNoticia($iduser)
     {
         $con = open_conexao();
-        if($rsnoticia = mysqli_query($con,"SELECT COUNT(*) FROM noticias WHERE Usuario_ID = ".$iduser))
+        if($rsnoticia = mysqli_query($con,"SELECT COUNT(*) FROM noticias WHERE Usuario_Id = ".$iduser))
         {
             if($rowNoticia = mysqli_fetch_array($rsnoticia))
             {
@@ -70,7 +70,7 @@
     {
         $con = open_conexao();
         
-        if($rs = mysqli_query($con,"SELECT * FROM mangas INNER JOIN estoque ON mangas.Estoque_ID = estoque.ID AND `Usuario_ID` =".$iduser))
+        if($rs = mysqli_query($con,"SELECT * FROM mangas INNER JOIN estoque ON mangas.Estoque_id = Estoque.id AND `Usuario_Id` =".$iduser))
         {
             return $rs;
         }
@@ -84,7 +84,7 @@
     function selectMangasByUserLimit($idM ,$inicio, $qtd)
     {
         $con = open_conexao();
-        $sql = "SELECT * FROM mangas INNER JOIN estoque ON mangas.Estoque_ID = estoque.ID AND `Usuario_ID` = $iduser ORDER BY ASC LIMIT $inicio, $qtd";
+        $sql = "SELECT * FROM mangas INNER JOIN estoque ON mangas.Estoque_id = estoque.id AND `Usuario_Id` = $iduser ORDER BY ASC LIMIT $inicio, $qtd";
         if($rs = mysqli_query($con,$sql))
         {
             return $rs;
@@ -100,7 +100,7 @@
     {
         $con = open_conexao();
         
-            if($rs = mysqli_query($con, "SELECT * FROM mangas INNER JOIN img_manga on img_manga.Manga_ID = mangas.ID INNER JOIN estoque on mangas.Estoque_ID = estoque.ID AND mangas.ID = ".$idManga))
+            if($rs = mysqli_query($con, "SELECT * FROM mangas INNER JOIN imagensmangas on imagensmangas.Mangas_id = mangas.id INNER JOIN estoque on mangas.Estoque_id = estoque.id AND mangas.id = ".$idManga))
             {
                 return $rs;
             }
@@ -115,7 +115,8 @@
     {
         $r = 0;
         $con = open_conexao();
-            if($rs = mysqli_query($con, "DELETE mangas, estoque, img_manga FROM mangas INNER JOIN img_manga on img_manga.Manga_ID = mangas.ID INNER JOIN estoque on mangas.Estoque_ID = estoque.ID AND mangas.ID = ".$id))
+            if($rs = mysqli_query($con, "DELETE mangas,estoque,imagensmangas from mangas INNER JOIN estoque ON mangas.Estoque_id = estoque.id INNER JOIN imagensmangas on 
+            imagensmangas.Mangas_id = mangas.id WHERE mangas.id = ".$id))
             {
                 $r = 1;
             }
@@ -125,7 +126,7 @@
     function SelectMangas()
     {
         $con = open_conexao();
-            if($rs = mysqli_query($con, "SELECT * FROM mangas INNER JOIN estoque ON mangas.Estoque_ID = estoque.ID ORDER BY mangas.Nome"))
+            if($rs = mysqli_query($con, "SELECT * FROM mangas INNER JOIN estoque ON mangas.Estoque_id = estoque.id ORDER BY mangas.Nome"))
             {
                 return $rs;
             }
@@ -138,7 +139,7 @@
     function SelectMangasLimt($inicio, $qtd)
     {
         $con = open_conexao();
-        $sql = "SELECT * FROM mangas INNER JOIN estoque ON mangas.Estoque_ID = estoque.ID ORDER BY mangas.Nome LIMIT $inicio, $qtd";
+        $sql = "SELECT * FROM mangas INNER JOIN estoque ON mangas.Estoque_id = estoque.id ORDER BY mangas.Nome LIMIT $inicio, $qtd";
         if($rs = mysqli_query($con,$sql))
         {
             return $rs;
@@ -154,31 +155,31 @@
     {
         $con = open_conexao();
         //Insere Estoque
-        $sqlEst = "INSERT INTO `estoque`(`Quantidade`) VALUES ('$qManga')";
+        $sqlEst = "INSERT INTO `estoque`(`Qtd`) VALUES ($qManga)";
         if(mysqli_query($con,$sqlEst))
         {
             //Pega IDEstpque
-            $sqlIDE = "SELECT MAX(ID) FROM estoque";
+            $sqlIDE = "SELECT MAX(id) FROM estoque";
             if($rsIDE = mysqli_query($con,$sqlIDE))
             {
                 if($rowIDE = mysqli_fetch_array($rsIDE))
                 {
-                    $idEstoq = $rowIDE['MAX(ID)'];
+                    $idEstoq = $rowIDE['MAX(id)'];
                     
                     //InsereManga
-                    $sqlManga = "INSERT INTO `mangas`(`Nome`, `Descricao`, `Sinopse`, `Preco`, `Usuario_ID`, `Estoque_ID`) VALUES ('$nManga','$dManga','$sManga','$pManga','$idUser','$idEstoq')";
+                    $sqlManga = "INSERT INTO `mangas`(`Nome`, `Descricao`, `Sinopse`, `ValorUnit`, `Usuario_Id`, `Estoque_id`) VALUES ('$nManga','$dManga','$sManga','$pManga','$idUser','$idEstoq')";
                     if(mysqli_query($con,$sqlManga))
                     {
                         //Pega IDMangá
-                        $sqlIDM = "SELECT MAX(ID) FROM mangas";
+                        $sqlIDM = "SELECT MAX(id) FROM mangas";
                         if($rsIDM = mysqli_query($con,$sqlIDM))
                         {
                             if($rowIDM = mysqli_fetch_array($rsIDM))
                             {
-                                $idManga = $rowIDM['MAX(ID)'];
+                                $idManga = $rowIDM['MAX(id)'];
 
-                                //Inserir Imagem/Inserir Gênero
-                                $sqlImg = "INSERT INTO `img_manga`(`Imagem`, `Manga_ID`) VALUES ('$iManga','$idManga')";
+                                //Inserir Imagem/
+                                $sqlImg = "INSERT INTO `imagensmangas`(`Imagem`, `Mangas_id`) VALUES ('$iManga','$idManga')";
                                 
                                 if(mysqli_query($con,$sqlImg))
                                 {
@@ -236,11 +237,25 @@
         close_conexao($con);
     }
 
+    function selectNoticiabyName($titulo)
+    {
+        $con = open_conexao();
+        $sql = "SELECT COUNT(*) FROM noticias WHERE Titulo = '$titulo'";
+        if($rs = mysqli_query($con,$sql))
+        {
+            if($row = mysqli_fetch_array($rs))
+            {
+                return $noticias = $row['COUNT(*)']; 
+            }
+        }
+        close_conexao($con);
+    }
+
     function UpdateManga($idManga,$nameManga,$desManga,$sinopManga,$precoManga,$qtdManga,$imgManga)
     {
         $con = open_conexao();
 
-        $sqlUP = "UPDATE mangas INNER JOIN estoque ON mangas.Estoque_ID = estoque.ID INNER JOIN img_manga ON img_manga.Manga_ID = mangas.ID SET mangas.Nome = '$nameManga', mangas.Descricao = '$desManga', mangas.Sinopse = '$sinopManga', mangas.Preco = $precoManga, estoque.Quantidade = $qtdManga, img_manga.Imagem = '$imgManga' WHERE mangas.ID = $idManga";
+        $sqlUP = "UPDATE mangas INNER JOIN estoque ON mangas.Estoque_id = estoque.id INNER JOIN imagensmangas ON imagensmangas.Mangas_id = mangas.id SET mangas.Nome = '$nameManga', mangas.Descricao = '$desManga', mangas.Sinopse = '$sinopManga', mangas.ValorUnit = $precoManga, estoque.Qtd = $qtdManga, imagensmangas.Imagem = '$imgManga' WHERE mangas.id = $idManga";
         if($rs = mysqli_query($con, $sqlUP))
         {
             $msg = "Dados Atualizados com sucesso";
@@ -252,47 +267,28 @@
         close_conexao($con);
         return $msg;
     }
-    function InsereRelatorioAadm($idUser,$desc,$data)
+    
+    function UpdateNoticia($idNoticia, $tituloN, $descBN, $DescCN, $data, $imagemN)
     {
         $con = open_conexao();
-        $sql = "INSERT INTO `relatorioadm`(`UserID`, `Dercricao`, `Data`) VALUES ($idUser,'$desc','$data')";
-        mysqli_query($con,$sql);
-        close_conexao($con);
-    }
-    function ListaRelatorioAdmLimit($inicio,$quantidade)
-    {
-        $con = open_conexao();
-        $sql = "SELECT * FROM relatorioadm ORDER BY Data DESC LIMIT $inicio, $quantidade";
+        $sql = "UPDATE noticias INNER JOIN imagensnoticias ON imagensnoticias.Noticias_id = noticias.id SET noticias.Titulo = '$tituloN', noticias.DescricaoBreve = '$descBN', noticias.Descricao = '$DescCN', noticias.Data = '$data', imagensnoticias.Imagem = '$imagemN' WHERE noticias.id = $idNoticia";
         if($rs = mysqli_query($con, $sql))
         {
-            return $rs;
+            $msg = "Dados Atualizados com Sucesso!";
         }
         else
         {
-            return 0;
+            $msg = "Falha na atualização de Dados!";
         }
         close_conexao($con);
+        return $msg;
     }
-    function ListaRelatorioAdm()
-    {
-        $con = open_conexao();
-        $sql = "SELECT * FROM relatorioadm ORDER BY Data DESC";
-        if($rs = mysqli_query($con, $sql))
-        {
-            return $rs;
-        }
-        else
-        {
-            return 0;
-        }
-        close_conexao($con);
-    }
-
+    
     function SelectNotcia()
     {
         $con = open_conexao();
         
-        $sql = "SELECT * FROM noticias INNER JOIN imagem_noticias ON imagem_noticias.Noticia_ID = noticias.ID ORDER BY noticias.Data DESC";
+        $sql = "SELECT * FROM noticias INNER JOIN imagensnoticias ON imagensnoticias.Noticias_id = noticias.id ORDER BY noticias.Data DESC";
         
         if($rs = mysqli_query($con, $sql))
         {
@@ -304,7 +300,8 @@
     function SelectNotciaLimt($inicio, $qtd)
     {
         $con = open_conexao();
-        $sql = "SELECT * FROM noticias INNER JOIN imagem_noticias ON imagem_noticias.Noticia_ID = noticias.ID ORDER BY noticias.Data DESC LIMIT $inicio, $qtd";
+        $sql = "SELECT * FROM noticias INNER JOIN imagensnoticias ON imagensnoticias.Noticias_id = noticias.id ORDER BY noticias.Data DESC LIMIT $inicio, $qtd";
+
         
         if($rs = mysqli_query($con, $sql))
         {
@@ -312,7 +309,69 @@
         }
         close_conexao($con);
     }
+    function NoticiaByID($idN)
+    {
+        $con = open_conexao();
+        $sql = "SELECT * FROM noticias INNER JOIN imagensnoticias on imagensnoticias.Noticias_id = noticias.id AND noticias.id =".$idN;
+        if($rs = mysqli_query($con,$sql))
+        {
+            return $rs;
+        }
+        close_conexao($con);
+    }
+
+    function RelatorioDAL($desc,$data,$relat)
+    {
+        $con = open_conexao();
+        
+        $sql = "INSERT INTO `relatorios`(`Descricao`, `Data`, `TiposRelatorios_id`) VALUES ('$desc',$data,$relat)";
+        $rs = mysqli_query($con,$sql);
+        return $rs;
+        
+        close_conexao($con);
+    }
+
+    function addNoticia( $titulo, $descricaoBreve, $descricao, $data, $imgNoticia, $idUser)
+    {
+        $con = open_conexao();
+
+        //insere noticias
+        $sql = "INSERT INTO `noticias`( `Titulo`, `DescricaoBreve`, `Descricao`, `Data`, `Usuario_Id`) VALUES ('$titulo','$descricaoBreve','$descricao','$data',$idUser)";
+        if(mysqli_query($con,$sql))
+        {
+            $sqlIDN = "SELECT MAX(id) FROM noticias";
+            if($rsIDN = mysqli_query($con,$sqlIDN))
+            {
+                if($rowIDN = mysqli_fetch_array($rsIDN))
+                {
+                    $idNot = $rowIDN['MAX(id)'];
+
+                    $sqlIMGNOT = "INSERT INTO `imagensnoticias`(`Imagem`, `Noticias_id`) VALUES ('$imgNoticia',$idNot)";
+                    if(mysqli_query($con,$sqlIMGNOT))
+                    {
+                        $msg = "noticia Adicionado com sucesso";
+                    }
+                    else
+                    {
+                        $msg = "Erro ao adicionar noticia - falha inserir imagem";
+                    }
+                }
+                else
+                {
+                    $msg = "Erro ao adicionar noticia - falha receber informacao noticia";
+                }
+            }
+            else
+            {
+                $msg = "Erro ao adicionar noticia - falha consulta";
+            }
+        }
+        else
+        {
+            $msg = "Erro ao adicionar noticia - falha inserir noticia";
+        }
+
+        close_conexao($con);
+        return $msg;
+    }
 ?>
-
-
-

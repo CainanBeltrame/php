@@ -15,12 +15,5 @@ function close_conexao($conexao) {
     }
      mysqli_close($conexao);
 }
-
-function selectDb(){
-    $banco = mysql_select_db("nossomanga");
-    if (!$banco) {
-        echo "Banco de Dados AprendendoPHP não existe ou sem conexao...";
-        exit;
-    }
-} 
+ 
 ?>
