@@ -16,10 +16,7 @@
         }
         else
         {
-            $idUser = $_SESSION['ID'];
-            $desc = "Usuario ".$_SESSION['NOME']." Excluiu 1 Manga  no  dia ";
-            $data = date('Y/m/d');
-            InsereRelatorioAadm($idUser,$desc,$data);
+           
             $_SESSION['MsgAviso'] = "Mangá deletado com Sucesso!";
         }
         $list = $_SESSION['tipoList'];

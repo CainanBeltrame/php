@@ -1,5 +1,5 @@
 <?PHP
-    require_once("/DAL/DAL.php");
+    require_once(".\DAL\DAL.php");
 
     function CountMangaPost($idUser)
     {
@@ -53,11 +53,11 @@
     {
         if($op == 1)
         {
-            $rs = ListaRelatorioAdmLimit($inicio, $quantidade);
+            
         }
         else
         {
-            $rs = ListaRelatorioAdm();
+            
         }
         return $rs;
     }
@@ -73,6 +73,11 @@
             $rs = SelectNotcia();
         }
         return $rs;
+    }
+
+    function selectNoticiaById($id)
+    {
+        return NoticiaByID($id);
     }
     
 ?>

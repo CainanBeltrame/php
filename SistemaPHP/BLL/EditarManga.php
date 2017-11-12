@@ -30,9 +30,11 @@
             {
                 $idUser = $_SESSION['ID'];
                 $_SESSION['MsgAviso'] = UpdateManga($idManga,$nameManga,$desManga,$sinopManga,$precoManga,$qtdManga,$imgManga);
-                $desc = "Usuario ".$_SESSION['NOME']." Editou 1 Manga  no  dia ";
-                $data = date('Y/m/d');
-                InsereRelatorioAadm($idUser,$desc,$data);
+                
+                $data = date("Y/m/d");
+                $relata = "O Administrador ".$_SESSION['NOME']." Modificou um o mangá ".$nameManga;
+                $tipore = 2;
+                RelatorioDAL($relata,$data,$tipore);
                 header("location:../Listas.php?type=$tipo&pagina=1");
             }
             else

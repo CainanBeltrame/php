@@ -6,7 +6,7 @@
     }
     else
     {
-        $UPLOADDIR = '../Imagens/Capas/';
+        $UPLOADDIR = '../Imagens/Capas/mangas';
         $UPLOADFILE = $UPLOADDIR . basename($_FILES['Imanga']['name']);
        
         echo '<pre>';
@@ -27,9 +27,11 @@
             if($validaManga == 0)
             {
                 $_SESSION['MsgAviso'] = AddManga($idUser,$nameManga,$desManga,$sinopManga,$precoManga,$qtdManga,$imgManga);
-                $desc = "Usuario ".$_SESSION['NOME']." Adicionou 1 Manga";
-                $data = date('Y/m/d');
-                InsereRelatorioAadm($idUser,$desc,$data);
+                //RELATORIO
+                $data = date("Y/m/d");
+                $relata = "O Administrador ".$_SESSION['NOME']." Inseriu um novo MANGÁ!";
+                $tipore = 2;
+                RelatorioDAL($relata,$data,$tipore);
                 header("location:../Listas.php?type=$tipo&pagina=1");
                 exit;
             }
